@@ -1,8 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-st.markdown('# Page 1')
-
 if 'data' in st.session_state:
     data = st.session_state.data
     st.text('Loading dataset')
