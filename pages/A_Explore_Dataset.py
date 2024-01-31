@@ -45,11 +45,7 @@ def sidebar(dataset, label):
     if label:
         minimum_value = dataset[label].min()
         maximum_value = dataset[label].max()
-
-        selected_range = st.sidebar.slider(
-            f"Select range for {label}",
-            minimum_value, maximum_value, (minimum_value, maximum_value)
-        )
+        selected_range = st.sidebar.slider(f"Select range for {label}", minimum_value, maximum_value, (minimum_value, maximum_value))
 
         filter = dataset[(dataset[label] >= selected_range[0]) & (dataset[label] <= selected_range[1])]
         return filter
@@ -72,7 +68,7 @@ if 'dataset' in st.session_state and st.session_state['dataset'] is not None:
     selected_feature = st.sidebar.selectbox('Select Feature for Histogram', numeric_columns)
 
     filtered = sidebar(data, selected_feature)
-    
+
     # Plot Histogram
     if selected_feature:
         fig = px.histogram(filtered, x=selected_feature)
